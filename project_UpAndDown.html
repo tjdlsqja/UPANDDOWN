@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UP AND DOWN</title>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#btnStart").click(function() {
+                $("#Game").empty();
+
+            var randomNum = Math.floor(Math.random() * 100 + 1);
+                    $("#randomNum").val(randomNum);
+
+                    $("#Game").append("<input type='text' id='userAnswer'></input>  ");
+                    $("#Game").append("<button id = 'btnAnswer' onclick ='Answer();'>확인</button>");
+
+            });
+        });
+
+            function Answer() {
+                var randomValue = $("#randomNum").val();
+                var userAnswer = $("#userAnswer").val();
+
+                if(randomValue == userAnswer) {
+                   $("#Game").append("<p>정답은" + randomValue + "입니다" + "정답입니다!</p>");
+                   
+                }
+                else if (Number(randomValue) > Number(userAnswer)) {
+                    $("#Game").append("<p>정답은" + userAnswer + "보다 큰 수 입니다.</p>");
+                }
+                else if (Number(randomValue) < Number(userAnswer)) {
+                    $("#Game").append("<p>정답은" + userAnswer + "보다 작은 수 입니다.</p>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>숫자 맞추기 게임</h1>
+        <p>1~100 의 수를 입력하세요.</p>
+        <button id="btnStart">게임시작</button>
+        <input id="randomNum" type="hidden"></input>
+        <div id="Game">
+        </div>
+    </body>
+</html>
